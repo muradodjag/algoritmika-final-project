@@ -3,19 +3,19 @@ const bcrypt = require('bcryptjs')
 const config = require('../config')
 
 class Auth {
-    constructor(user) {
-        this.user = user
+    constructor(admin) {
+        this.admin = admin
     }
 
-    genToken(user) {
-        const token = jwt.sign({ id: user.id }, config.JWT_SECRET, { expiresIn: '1h' })
+    genToken(admin) {
+        const token = jwt.sign({ id: admin.id }, config.JWT_SECRET, { expiresIn: '1h' })
         return token
     }
 
-    async signin(email, password) {
-        const user = await this.user.findOne({
+    async signin(login, password) {
+        const user = await this.admin.findOne({
             where: {
-                email: email
+                login: login
             }
         })
 
@@ -28,9 +28,21 @@ class Auth {
             throw new Error('Invalid Email or Password!')
         }
         const token = this.genToken(user)
-        const { name } = user
-        return { token, userData: { name, email } }
+        return { token, userData: { login } }
     }
+    async signup(userDTO) {
+        try {
+            userDTO.password = bcrypt.hashSync(userDTO.password, 8)
+            await this.admin.create(userDTO)
+        } catch (err) {
+            throw new Error(err.message)
+        }
+    }
+
+
+
 }
+
+
 
 module.exports = Auth
