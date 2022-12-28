@@ -5,7 +5,7 @@ const helmet = require('helmet')
 const routes = require('./routes')
 const compression = require('compression')
 const config = require('./config')
-//const auth = require('./middleware/auth')
+const auth = require('./middleware/auth')
 
 const app = express()
 const swaggerUi = require('swagger-ui-express');
@@ -30,29 +30,29 @@ const options = {
 }
 
 const specs = swaggerJsDoc(options)
-// app.use(cookieParser())
-// app.use(compression())
-// app.use(
-//     cors({
-//         origin: config.CLIENT_URL,
-//         credentials: true,
-//         methods: 'GET,PUT,POST,OPTIONS,DELETE'
-//     })
-// )
+app.use(cookieParser())
+app.use(compression())
+app.use(
+    cors({
+        origin: config.CLIENT_URL,
+        credentials: true,
+        methods: 'GET,PUT,POST,OPTIONS,DELETE'
+    })
+)
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 app.use(helmet())
 app.use(express.json())
 
-// app.all(`${config.API_BASE}*`, (req, res, next) => {
-//     const publicRoutes = config.PUBLIC_ROUTES
-//     for (let i = 0; i < publicRoutes.length; i += 1) {
-//         if (req.path === publicRoutes[i]) {
-//             return next()
-//         }
-//     }
-//     auth(req, res, next)
-// })
+app.all(`${config.API_BASE}/admin*`, (req, res, next) => {
+    const publicRoutes = config.PUBLIC_ROUTES
+    for (let i = 0; i < publicRoutes.length; i += 1) {
+        if (req.path === publicRoutes[i]) {
+            return next()
+        }
+    }
+    auth(req, res, next)
+})
 
 app.get('/', (req, res) => {
     res.status(200).send('<h1>Algoritmika final project</h1>')
