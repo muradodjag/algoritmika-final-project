@@ -8,7 +8,8 @@ const coinService = new CoinService(Coin)
 router.get('/category/:id', async (req, res) => {
     const { params: { id } } = req
     try {
-        const coins = await coinService.getByCategory(id)
+        console.log(req.query)
+        const coins = await coinService.getByCategory(id, req.query)
         res.send(coins)
     } catch (err) {
         res.status(400).send(err)

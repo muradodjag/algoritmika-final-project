@@ -12,7 +12,7 @@ class AdminService {
                 where: {
 
                     [Op.or]: [
-                        { name: { [Op.like]: `%${query.name}%` } },
+                        { name: { [Op.iLike]: `%${query.name.toLowerCase()}%` } },
                     ]
                 }
             })

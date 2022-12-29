@@ -3,14 +3,26 @@ class CoinService {
         this.coin = Coin
     }
 
-    async getByCategory(id) {
+
+    async getByCategory(id, query) {
+
+        const paginate = (query, page, pageSize) => {
+
+            const offset = page * pageSize;
+            const limit = pageSize;
+            return {
+                ...query,
+                offset,
+                limit
+            }
+        }
         try {
-            return await this.coin.findAll({
+            return await this.coin.findAll(paginate({
                 attributes: { exclude: ['createdAt', 'updatedAt'] },
                 where: {
                     category: id
                 }
-            })
+            }, query.page, query.pageSize))
 
         } catch (err) {
             throw new Error(err)
