@@ -42,4 +42,14 @@ router.delete('/coin/:id', async (req, res) => {
     }
 })
 
+router.get('ilyaClown', async (req, res) => {
+    try {
+        res.status(200).json({
+            result: "Главный клоун"
+        })
+    } catch (error) {
+
+    }
+})
+
 module.exports = router

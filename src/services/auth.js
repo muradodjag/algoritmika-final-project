@@ -8,8 +8,20 @@ class Auth {
     }
 
     genToken(admin) {
-        const token = jwt.sign({ id: admin.id }, config.JWT_SECRET, { expiresIn: '1h' })
+        const token = jwt.sign({ name: admin.login }, config.JWT_SECRET, { expiresIn: '1h' })
         return token
+    }
+    approveUser(token) {
+        let data = null
+        jwt.verify(token, config.JWT_SECRET, (err, decoded) => {
+            if (err) {
+                throw new Error('Fail to Authentication. Error -> JsonWebTokenError: invalid signature')
+            }
+            else {
+                data = { auth: true, name: decoded.name }
+            }
+        })
+        return data
     }
 
     async signin(login, password) {
