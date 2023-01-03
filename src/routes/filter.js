@@ -10,10 +10,12 @@ router.get('/info', async (req, res) => {
         const country = await filterService.getInfo('country')
         const quality = await filterService.getInfo('quality')
         const metal = await filterService.getInfo('metal')
+        const category = await filterService.getInfo('category')
         res.json({
             country: country,
             quality: quality,
-            metal: metal
+            metal: metal,
+            category: category
         })
     }
     catch (err) {

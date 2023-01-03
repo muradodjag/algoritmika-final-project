@@ -59,6 +59,7 @@ class FilterService {
                         query.country ? { country: { [Op.iLike]: query.country.toLowerCase() } } : true,
                         query.metal ? { metal: { [Op.iLike]: query.metal.toLowerCase() } } : true,
                         query.quality ? { quality: { [Op.iLike]: query.quality.toLowerCase() } } : true,
+                        query.category ? { category: query.category } : true,
                         (query.priceFrom && query.priceTo) ? { price: { [Op.between]: [query.priceFrom, query.priceTo] } } : (query.priceFrom) ? { price: { [Op.gte]: query.priceFrom } } : (query.priceTo) ? { price: { [Op.lte]: query.priceTo } } : true,
                         (query.yearFrom && query.yearTo) ? { year: { [Op.between]: [query.yearFrom, query.yearTo] } } : (query.yearFrom) ? { year: { [Op.gte]: query.yearFrom } } : (query.yearTo) ? { year: { [Op.lte]: query.yearTo } } : true,
                     ]
