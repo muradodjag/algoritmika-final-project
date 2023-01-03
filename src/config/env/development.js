@@ -12,7 +12,7 @@ class Config {
         this.COOKIE_SECURE = false
         this.COOKIE_SAME_SITE = 'Strict'
         this.PUBLIC_ROUTES = ['/api/admin/signin', '/api/admin/signup']
-        this.CLIENT_URL = 'http://localhost:5500'
+        this.CLIENT_URL = 'http://localhost:3000'
     }
 }
 

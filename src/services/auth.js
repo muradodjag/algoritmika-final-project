@@ -8,7 +8,7 @@ class Auth {
     }
 
     genToken(admin) {
-        const token = jwt.sign({ name: admin.login }, config.JWT_SECRET, { expiresIn: '1h' })
+        const token = jwt.sign({ name: admin.login }, config.JWT_SECRET, { expiresIn: '12h' })
         return token
     }
     approveUser(token) {
