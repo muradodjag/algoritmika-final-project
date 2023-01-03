@@ -24,7 +24,8 @@ router.get('/info', async (req, res) => {
 router.get('/', async (req, res) => {
     try {
         const coins = await filterService.getCoins(req.query)
-        res.json(coins)
+        const count = await filterService.getCount()
+        res.json({ coins: coins, count: count })
     } catch (err) {
         res.status(400).send(err.message)
     }

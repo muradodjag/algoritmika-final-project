@@ -3,7 +3,9 @@ const { Sequelize } = require("sequelize")
 class FilterService {
     constructor(Coin) {
         this.coin = Coin
+        this.count = 0
     }
+
 
     async getInfo(fieldName) {
         try {
@@ -16,9 +18,13 @@ class FilterService {
             throw new Error(err)
         }
     }
+    async getCount() {
+        return this.count
+    }
     async getCoins(query) {
-        const paginate = (query, page, pageSize) => {
-            console.log('page', page)
+
+        const paginate = async (query, page, pageSize) => {
+            this.count = await this.coin.count(query);
             const offset = page * pageSize;
             const limit = pageSize;
             return {
@@ -30,7 +36,7 @@ class FilterService {
         try {
             const Op = Sequelize.Op
             const len = Object.keys(query).length
-            return len == 3 ? await this.coin.findAll(paginate({
+            return len == 3 ? await this.coin.findAll(await paginate({
                 attributes: { exclude: ['createdAt', 'updatedAt'] },
                 where: {
 
@@ -40,7 +46,7 @@ class FilterService {
                         { longDescription: { [Op.iLike]: `%${query.search.toLowerCase()}%` } }
                     ]
                 }
-            }, query.page, query.pageSize)) : await this.coin.findAll(paginate({
+            }, query.page, query.pageSize)) : await this.coin.findAll(await paginate({
                 attributes: { exclude: ['createdAt', 'updatedAt'] },
                 where: {
 

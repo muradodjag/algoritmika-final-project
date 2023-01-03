@@ -10,7 +10,8 @@ router.get('/category/:id', async (req, res) => {
     try {
         console.log(req.query)
         const coins = await coinService.getByCategory(id, req.query)
-        res.send(coins)
+        const count = await coinService.getCount(id)
+        res.json({ coins: coins, count: count })
     } catch (err) {
         res.status(400).send(err)
     }

@@ -4,6 +4,10 @@ class CoinService {
     }
 
 
+    async getCount(id) {
+        return await this.coin.count({ col: 'id', where: { category: id } })
+    }
+
     async getByCategory(id, query) {
 
         const paginate = (query, page, pageSize) => {
