@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="css/style.css" />
+        <title>Homepage</title>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <h1>Homepage</h1>
+                <form class="coin_search">
+                    <label class="name_label label" for="name">Input field</label>
+                    <input class="input" id="name" type="text" name="name" />
+                    <button type="submit" class="button submit">Search</button>
+                </form>
+                <div class="filter">
+                    <a href="#" class="filter_click">
+                        <div class="filter_text">Advanced filter</div>
+                        <div class="filter_arrow">
+                            <img src="img/arrow.svg" alt="arrow" />
+                        </div>
+                    </a>
+                    <div class="filter_content">
+                        <form class="filter_form">
+                            <div class="filter_field country">
+                                <label class="filter_field_name" for="country"
+                                    >Issuing country</label
+                                >
+                                <select
+                                    name="country"
+                                    id="country"
+                                    class="filter_select"
+                                >
+                                    <option selected hidden></option>
+                                    <option>Canada</option>
+                                </select>
+                            </div>
+                            <div class="filter_field metal">
+                                <label class="filter_field_name" for="metal"
+                                    >Metal</label
+                                >
+                                <select
+                                    name="metal"
+                                    id="metal"
+                                    class="filter_select"
+                                >
+                                    <option>Gold</option>
+                                </select>
+                            </div>
+                            <div class="filter_field quality">
+                                <label class="filter_field_name" for="quality"
+                                    >Quality of the coin</label
+                                >
+                                <select
+                                    name="quality"
+                                    id="quality"
+                                    class="filter_select"
+                                >
+                                    <option>Proof</option>
+                                </select>
+                            </div>
+                            <div class="filter_field category">
+                                <label class="filter_field_name" for="category"
+                                    >Category</label
+                                >
+                                <select
+                                    name="category"
+                                    id="category"
+                                    class="filter_select"
+                                >
+                                    <option>Proof</option>
+                                </select>
+                            </div>
+                            <div class="filter_field filter_field_input price">
+                                <div class="filter_field_name">Price</div>
+                                <div class="filter_field_wrap">
+                                    <label
+                                        class="filter_field_subname"
+                                        for="price_from"
+                                        >from</label
+                                    >
+                                    <input
+                                        id="price_from"
+                                        type="number"
+                                        name="name"
+                                        class="filter_input"
+                                    />
+                                    <label
+                                        class="filter_field_subname"
+                                        for="price_to"
+                                        >to</label
+                                    >
+                                    <input
+                                        id="price_to"
+                                        type="number"
+                                        name="price_to"
+                                        class="filter_input"
+                                    />
+                                </div>
+                            </div>
+                            <div class="filter_field filter_field_input year">
+                                <div class="filter_field_name">
+                                    Year of issue
+                                </div>
+                                <div class="filter_field_wrap">
+                                    <label
+                                        class="filter_field_subname"
+                                        for="year_from"
+                                        >from</label
+                                    >
+                                    <input
+                                        id="year_from"
+                                        type="number"
+                                        name="year_from"
+                                        class="filter_input"
+                                    />
+                                    <label
+                                        class="filter_field_subname"
+                                        for="year_to"
+                                        >to</label
+                                    >
+                                    <input
+                                        id="year_to"
+                                        type="number"
+                                        name="price_to"
+                                        class="filter_input"
+                                    />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <section>
+            <div class="container">
+                <div class="coins_content_type">
+                    <div class="coins_type">
+                        <h2 class="coins_type_name">Bullion coins</h2>
+                        <a href="/list.html" class="subtitle">
+                            <div class="subtitle_text">Show all</div>
+                            <div class="arrow_right">
+                                <img src="img/arrow.svg" alt="arrow" />
+                            </div>
+                        </a>
+                        <div class="coins_type_img">
+                            <img src="img/bullion.png" alt="bullion" />
+                        </div>
+                    </div>
+                    <div class="coins_type">
+                        <h2 class="coins_type_name">Exclusive coins</h2>
+                        <a href="/list.html" class="subtitle">
+                            <div class="subtitle_text">Show all</div>
+                            <div class="arrow_right">
+                                <img src="img/arrow.svg" alt="arrow" />
+                            </div>
+                        </a>
+                        <div class="coins_type_img">
+                            <img src="img/exclusive.png" alt="exclusive" />
+                        </div>
+                    </div>
+                    <div class="coins_type">
+                        <h2 class="coins_type_name">Commemorative coins</h2>
+                        <a href="/list.html" class="subtitle">
+                            <div class="subtitle_text">Show all</div>
+                            <div class="arrow_right">
+                                <img src="img/arrow.svg" alt="arrow" />
+                            </div>
+                        </a>
+                        <div class="coins_type_img">
+                            <img src="img/commemorative.png" alt="commemorative" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script src="js/script.js"></script>
+    </body>
+</html>

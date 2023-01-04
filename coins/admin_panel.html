@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Admin panel</title>
+</head>
+<body>
+    <header>
+        <h1>Admin panel</h1>
+        <form class="coin_search">
+            <label class="name_label label" for="name">Input field</label>
+            <input class="input" id="name" type="text" name="name" />
+            <button type="submit" class="button submit">Search</button>
+        </form>
+    </header>
+    <section>
+        <div class="coins_wrapper">
+            <div class="coin_edit">
+                <div class="coin_edit_img"><img src="img/coins/canadian_beaver.png" alt="canadian_beaver"></div>
+                <div class="coin_edit_info">
+                    <div class="coin_name coin_edit_title">Canadian Beaver</div>
+                    <div class="coin_descr coin_edit_descr">"Canadian beaver". Unique coin with the image of a beaver. Face value - 5 cents. Created under Elizabeth II.</div>
+                </div>
+                <button class="button coin_edit_btn edit">Edit</button>
+                <button class="button coin_edit_btn delete">Delete</button>
+            </div>
+            <div class="coin_edit">
+                <div class="coin_edit_img"><img src="img/coins/looney.png" alt="looney"></div>
+                <div class="coin_edit_info">
+                    <div class="coin_name coin_edit_title">Looney</div>
+                    <div class="coin_descr coin_edit_descr">"Looney". Unique coin with the image of a goat. Canadian dollar symbol.</div>
+                </div>
+                <button class="button coin_edit_btn edit">Edit</button>
+                <button class="button coin_edit_btn delete">Delete</button>
+            </div>
+            <div class="coin_edit">
+                <div class="coin_edit_add">
+                    <div class="coin_edit_plus_first"></div>
+                    <div class="coin_edit_plus_second"></div>
+                </div>
+                <a class="coin_edit_link" href="#">Add a new coin</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
